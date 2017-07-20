@@ -1,7 +1,11 @@
 import unittest
 import os
 
-TARGET_DIR = "target"
+#
+# Run this test after running findAndOrganizeNewPhotos.py to check if the correct folder structure was created.
+#
+
+TARGET_DIR = "../target"
 
 
 class OutputContains4JpgFilesIn2Folders(unittest.TestCase):
