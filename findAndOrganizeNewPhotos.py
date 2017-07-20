@@ -3,6 +3,9 @@ import fnmatch
 import shutil
 import re
 
+#
+# TODO: this is pretty bad, needs work in naming things, extracting constants, split the copyPhotos method, maybe? 
+#
 
 class FindAndOrganizeNewPhotos():
     def getJpgFiles(self, rootDir):
