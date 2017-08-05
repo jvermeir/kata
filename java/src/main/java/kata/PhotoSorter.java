@@ -11,6 +11,11 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.logging.Logger;
 
+/**
+ * Sort a set of files into subdirectories named after the year and month as found in the files.
+ * See ../validate/acceptanceTest.py
+ */
+
 public class PhotoSorter {
     private final String sourceDirectory;
     private final String outputDirectory;
@@ -105,6 +110,7 @@ public class PhotoSorter {
 class NewFileFilter implements IOFileFilter {
 
     private final String currentFilesDirectory;
+
     public NewFileFilter(String currentFilesDirectory) {
         this.currentFilesDirectory = currentFilesDirectory;
     }

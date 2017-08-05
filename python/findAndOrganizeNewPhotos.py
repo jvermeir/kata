@@ -6,7 +6,7 @@ import re
 
 #
 # Sort a set of files into subdirectories named after the year and month as found in the files.
-# See ../acceptanceTest/acceptanceTest.py
+# See ../validate/acceptanceTest.py
 #
 
 
