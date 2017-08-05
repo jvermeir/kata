@@ -50,9 +50,11 @@ def createEmptyTargetFolder(targetDir):
 
 
 if __name__ == '__main__':
-    fromPhoneDir = "acceptanceTest/testData/input"
-    allPhotosDir = "acceptanceTest/testData/currentPhotos"
-    targetDir = "target"
+    fromPhoneDir = "../validate/testData/input"
+    allPhotosDir = "../validate/testData/currentPhotos"
+    targetDir = "../validate/target"
     createEmptyTargetFolder(targetDir)
 
     FindAndOrganizeNewPhotos().copyNewPhotosToTargetFolder(fromPhoneDir, allPhotosDir, targetDir)
+
+    print "Now run acceptanceTest.py to check if it works"
