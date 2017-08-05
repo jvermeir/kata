@@ -4,4 +4,4 @@ After reading Uncle Bob's Clean Coder book, I decided to follow his advice to pr
 
 To get started I copied a tool I made to organize a few thousand photo's on my phone. 
 
-## TODO: arrange the problem/solution folders in a more meaningful way.
+The validate directory contains a small test utility. Each solution should create a directory structure validate/target. After running the solution code, run validate/acceptanceTest.py to check the result. 
