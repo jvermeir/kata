@@ -51,7 +51,7 @@ public class FindAndOrganizeNewPhotosTest {
     public void testOutputDirectoryIsEmptyWhenPhotoSorterIsCreated() {
         try {
             PhotoSorter photoSorter = new PhotoSorter("source", TARGET_DIRECTORY);
-            File outputDirectory = new File(photoSorter.getOutputDirectory());
+            File outputDirectory = new File(TARGET_DIRECTORY);
             Assert.assertTrue(outputDirectory.exists());
             Assert.assertEquals(0, FileUtils.listFiles(outputDirectory, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE).size());
         } catch (IOException e) {
@@ -64,6 +64,7 @@ public class FindAndOrganizeNewPhotosTest {
         try {
             PhotoSorter photoSorter = new PhotoSorter(INPUT_DIRECTORY, TARGET_DIRECTORY);
             photoSorter.copyFilesToDirectories();
+            // TODO: Replace ../validate with constant
             Assert.assertTrue(new File("../validate/target/" + "201701/20170101_123456.jpg").exists());
             Assert.assertTrue(new File("../validate/target/" + "201701/20170102_123456.jpg").exists());
             Assert.assertTrue(new File("../validate/target/" + "201701/IMG-20170101-WA0000.jpg").exists());

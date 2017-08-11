@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.logging.Logger;
 
 /**
- * Sort a set of files into subdirectories named after the year and month as found in the files.
+ * Sort a set of files into subdirectories named after the year and month as found in the filename.
  * See ../validate/acceptanceTest.py
  */
 
@@ -70,19 +70,14 @@ public class PhotoSorter {
         return FileUtils.listFiles(new File(sourceDirectory), new NewFileFilter(currentPhotosDirectory), TrueFileFilter.INSTANCE);
     }
 
-    protected String getOutputDirectory() {
-        return outputDirectory;
-    }
-
     public void copyFilesToDirectories() {
         Collection<File> files = findFiles();
         for (File file : files) {
             String yearAndMonth = extractYearAndMonthFromFileName(file.getName());
-            String fileName = file.getName();
             String outputDirForCurrentFile = outputDirectory + "/" + yearAndMonth + "/";
             new File(outputDirForCurrentFile).mkdirs();
             try {
-                FileUtils.copyFile(file, new File(outputDirForCurrentFile + fileName));
+                FileUtils.copyFile(file, new File(outputDirForCurrentFile + file.getName()));
             } catch (IOException e) {
                 LOGGER.info("Error copying file " + file);
             }
@@ -104,6 +99,7 @@ public class PhotoSorter {
             photoSorter = new PhotoSorter(directoryWithUnsortedPhotos, directoryForSortedPhotos, directoryForPhotosThatWereCopiedEarlier);
         }
         photoSorter.copyFilesToDirectories();
+        System.out.println("Now run acceptanceTest.py to check if it worked");
     }
 }
 
