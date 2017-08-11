@@ -11,10 +11,6 @@ import datetime
 # See ../validate/acceptanceTest.py
 #
 
-#
-# TODO: copy only if file contains a valid date
-# TODO: add unit tests
-
 class FindAndOrganizeNewPhotos:
     def getJpgFiles(self, rootDir):
         jpgFiles = dict()
@@ -26,7 +22,9 @@ class FindAndOrganizeNewPhotos:
     datePattern = r'^(?:IMG-)?(\d\d\d\d\d\d\d\d)[_-].*'
 
     def extractDateFromFileName(self, fileName):
-        date = re.findall(self.datePattern, fileName)
+        fileNameParts = fileName.split('/')
+        baseName = fileNameParts[len(fileNameParts)-1]
+        date = re.findall(self.datePattern, baseName)
         if len(date) > 0 and len(date[0]) == 8:
             try:
                 datetime.datetime.strptime(date[0], "%Y%m%d")
@@ -80,6 +78,6 @@ if __name__ == '__main__':
 
     createEmptyTargetFolder(targetDir)
 
-    FindAndOrganizeNewPhotos().copyNewPhotosToTargetFolder(fromPhoneDir, allPhotosDir, targetDir)
+    FindAndOrganizeNewPhotos().copyNewPhotosToTargetFolder(fromPhoneDir, targetDir, allPhotosDir)
 
     print "Now run acceptanceTest.py to check if it worked"

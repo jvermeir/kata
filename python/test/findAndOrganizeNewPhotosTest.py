@@ -23,20 +23,21 @@ class FindAndOrganizeNewPhotosTest(unittest.TestCase):
         self.assertEqual('', FindAndOrganizeNewPhotos().extractDateFromFileName("aap-20170101_WA0000.jpg"))
         self.assertEqual('', FindAndOrganizeNewPhotos().extractDateFromFileName("IM-20170101_WA0000.jpg"))
         self.assertEqual('', FindAndOrganizeNewPhotos().extractDateFromFileName("aap"))
+        self.assertEqual('201702', FindAndOrganizeNewPhotos().extractDateFromFileName('../../validate/testData/input/IMG-20170201-WA0000.jpg'))
 
     def testFilesAreCopiedToTargetDir(self):
         createEmptyTargetFolder(OUTPUTDIRECTORY)
         FindAndOrganizeNewPhotos().copyNewPhotosToTargetFolder(SOURCEDIRECTORY, OUTPUTDIRECTORY)
         targetFiles = FindAndOrganizeNewPhotos().getJpgFiles(OUTPUTDIRECTORY)
         self.assertEqual(5, len(targetFiles))
-        self.assertTrue(os.path.exists(OUTPUTDIRECTORY + "/20170101_123456.jpg"))
+        self.assertTrue(os.path.exists(OUTPUTDIRECTORY + "/201701/20170101_123456.jpg"))
 
     def testFilesInCurrentDirAreIgnoredIfCurrentDirIsSet(self):
         createEmptyTargetFolder(OUTPUTDIRECTORY)
         FindAndOrganizeNewPhotos().copyNewPhotosToTargetFolder(SOURCEDIRECTORY, OUTPUTDIRECTORY, currentPhotosDirectory=CURRENTPHOTOSDIRECTORY)
         targetFiles = FindAndOrganizeNewPhotos().getJpgFiles(OUTPUTDIRECTORY)
         self.assertEqual(4, len(targetFiles))
-        self.assertFalse(os.path.exists(OUTPUTDIRECTORY + "/20170102_123456.jpg"))
+        self.assertFalse(os.path.exists(OUTPUTDIRECTORY + "/201701/20170102_123456.jpg"))
 
 
 if __name__ == '__main__':
