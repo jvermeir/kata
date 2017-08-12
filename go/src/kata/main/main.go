@@ -1,8 +1,9 @@
 package main
 
 import (
-    "fmt"
-	"kata/hello" )
+	"fmt"
+	"kata/photosorter"
+)
 
 func main() {
 	x := kata.SayHello()
