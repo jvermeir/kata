@@ -6,7 +6,7 @@ Set your GOPATH variable like this
 ```
 export GOPATH=`PWD`
 ```
-To build and test I've used Sebastien Binet 
+To build and test I've used Sebastien Binet's 
 make utility [https://github.com/sbinet/mk/blob/master/main.go](https://github.com/sbinet/mk/blob/master/main.go)
 
 Just do 
