@@ -64,7 +64,6 @@ public class FindAndOrganizeNewPhotosTest {
         try {
             PhotoSorter photoSorter = new PhotoSorter(INPUT_DIRECTORY, TARGET_DIRECTORY);
             photoSorter.copyFilesToDirectories();
-            // TODO: Replace ../validate with constant
             Assert.assertTrue(new File(TARGET_DIRECTORY + "201701/20170101_123456.jpg").exists());
             Assert.assertTrue(new File(TARGET_DIRECTORY + "201701/20170102_123456.jpg").exists());
             Assert.assertTrue(new File(TARGET_DIRECTORY + "201701/IMG-20170101-WA0000.jpg").exists());
