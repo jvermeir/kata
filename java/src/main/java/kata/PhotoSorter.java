@@ -17,24 +17,7 @@ import java.util.logging.Logger;
  */
 
 public class PhotoSorter {
-    private final String sourceDirectory;
-    private final String outputDirectory;
-    private final String currentPhotosDirectory;
     private static final Logger LOGGER = Logger.getLogger(PhotoSorter.class.getName());
-
-    public PhotoSorter(String sourceDirectory, String outputDirectory) throws IOException {
-        this.sourceDirectory = sourceDirectory;
-        this.outputDirectory = outputDirectory;
-        this.currentPhotosDirectory = null;
-        createOutputDirectory(outputDirectory);
-    }
-
-    public PhotoSorter(String sourceDirectory, String outputDirectory, String currentPhotosDirectory) throws IOException {
-        this.sourceDirectory = sourceDirectory;
-        this.outputDirectory = outputDirectory;
-        this.currentPhotosDirectory = currentPhotosDirectory;
-        createOutputDirectory(outputDirectory);
-    }
 
     private void createOutputDirectory(String outputDirectory) throws IOException {
         FileUtils.deleteDirectory(new File(outputDirectory));
@@ -66,12 +49,17 @@ public class PhotoSorter {
         return true;
     }
 
-    protected Collection<File> findFiles() {
+    protected Collection<File> findFiles(String sourceDirectory, String currentPhotosDirectory) {
         return FileUtils.listFiles(new File(sourceDirectory), new NewFileFilter(currentPhotosDirectory), TrueFileFilter.INSTANCE);
     }
 
-    public void copyFilesToDirectories() {
-        Collection<File> files = findFiles();
+    public void copyFilesToDirectories(String sourceDirectory, String outputDirectory) throws IOException {
+        copyFilesToDirectories(sourceDirectory, outputDirectory,"");
+    }
+
+    public void copyFilesToDirectories(String sourceDirectory, String outputDirectory, String currentPhotosDirectory) throws IOException {
+        createOutputDirectory(outputDirectory);
+        Collection<File> files = findFiles(sourceDirectory, currentPhotosDirectory);
         for (File file : files) {
             String yearAndMonth = extractYearAndMonthFromFileName(file.getName());
             String outputDirForCurrentFile = outputDirectory + "/" + yearAndMonth + "/";
@@ -91,14 +79,12 @@ public class PhotoSorter {
         }
         String directoryWithUnsortedPhotos = args[0];
         String directoryForSortedPhotos = args[1];
-        PhotoSorter photoSorter = null;
-        if (args.length == 2) {
-            photoSorter = new PhotoSorter(directoryWithUnsortedPhotos, directoryForSortedPhotos);
-        } else {
-            String directoryForPhotosThatWereCopiedEarlier = args[2];
-            photoSorter = new PhotoSorter(directoryWithUnsortedPhotos, directoryForSortedPhotos, directoryForPhotosThatWereCopiedEarlier);
+        String directoryForPhotosThatWereCopiedEarlier = "";
+        if (args.length > 2) {
+            directoryForPhotosThatWereCopiedEarlier = args[2];
         }
-        photoSorter.copyFilesToDirectories();
+        PhotoSorter photoSorter = new PhotoSorter();
+        photoSorter.copyFilesToDirectories(directoryWithUnsortedPhotos, directoryForSortedPhotos, directoryForPhotosThatWereCopiedEarlier);
         System.out.println("Now run acceptanceTest.py to check if it worked");
     }
 }
