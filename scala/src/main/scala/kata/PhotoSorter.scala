@@ -16,22 +16,21 @@ object PhotoSorter extends App {
     println("Usage: scala kata.PhotoSorter <directoryWithUnsortedPhotos> <directoryForSortedPhotos> [directoryForPhotosThatWereCopiedEarlier]")
     System.exit(-1)
   }
-  if (args.length >= 2) {
-    val inputDir = args(0)
-    val outputDir = args(1)
-    val curentDIr =
-      if (args.length == 3) args(2)
-      else ""
-    val photoSorter = new PhotoSorter
-    photoSorter.copy(inputDir, outputDir, curentDIr)
-  }
+  val inputDir = args(0)
+  val outputDir = args(1)
+  val curentDIr =
+    if (args.length == 3) args(2)
+    else ""
+  val photoSorter = new PhotoSorter
+  photoSorter.copy(inputDir, outputDir, curentDIr)
+  println("Now run acceptanceTest.py to check if it worked")
 }
 
 class PhotoSorter {
 
   def copyFile(file: File, outputDir: String) = {
     val folderNamedAfterTheYearAndMonth = getYearMonthFromFileName(file.getName)
-    val directory = new File(outputDir + folderNamedAfterTheYearAndMonth)
+    val directory = new File(outputDir + "/" + folderNamedAfterTheYearAndMonth)
     directory.mkdirs
     FileUtils.copyFile(file, new File(directory + "/" + file.getName))
   }
@@ -82,5 +81,4 @@ class PhotoSorter {
       else nameParts(0)
     baseName
   }
-
 }
