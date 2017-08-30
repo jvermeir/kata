@@ -100,7 +100,7 @@ class NewFileFilter implements IOFileFilter {
     @Override
     public boolean accept(File file) {
         String fullName = currentFilesDirectory + "/" + file.getName();
-        return !new File(fullName).exists();
+        return fullName.toUpperCase().endsWith("JPG") && !new File(fullName).exists();
     }
 
     @Override
