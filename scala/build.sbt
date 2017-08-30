@@ -11,3 +11,13 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= Seq(scalaTest % Test,
       "commons-io"       % "commons-io"        % "2.5")
   )
+
+import AssemblyKeys._
+
+assemblySettings
+
+version := "1.0"
+
+mainClass in assembly := Some("kata.PhotoSorter")
+
+name := "photoSorter"
