@@ -19,11 +19,11 @@ func GetDateFromFileName(fileName string) string {
 
 func GetListOfFiles(directoryName string) []string {
 	files, _ := ioutil.ReadDir(directoryName)
-	result := make([]string, len(files))
-	i := 0
+	result := make([]string, 0)
 	for _, file := range files {
-		result[i] = file.Name()
-		i = i+1
+		if strings.HasSuffix(strings.ToUpper(file.Name()), "JPG") {
+			result = append(result, file.Name())
+		}
 	}
 	return result
 }
