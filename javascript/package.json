@@ -1,0 +1,16 @@
+{
+  "name": "javascript-kata",
+  "version": "1.0.0",
+  "description": "JavaScript Kata version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.8.0",
+    "mkdirp": "^0.5.1 ",
+    "fs-extra": "4.0.1"
+  }
+}
