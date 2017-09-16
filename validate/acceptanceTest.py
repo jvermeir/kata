@@ -2,7 +2,7 @@ import unittest
 import os
 
 #
-# Run this test after running findAndOrganizeNewPhotos.py to check if the correct folder structure was created.
+# Run this test after running one of the solutions to check if the correct folder structure was created.
 #
 
 TARGET_DIR = "target"
@@ -14,8 +14,10 @@ class OutputContains4JpgFilesIn2Folders(unittest.TestCase):
                                TARGET_DIR + '/201701/IMG-20170101-WA0000.jpg',
                                TARGET_DIR + '/201702/20170201_123456.jpg',
                                TARGET_DIR + '/201702/IMG-20170201-WA0000.jpg']
+        expectedOutputFiles.sort()
         actualOutputFiles = set(self.getFilesInTargetFolder(TARGET_DIR))
-        self.assertItemsEqual(expectedOutputFiles, actualOutputFiles, 'expected \n' + ', '.join(expectedOutputFiles) + '\n does not match actual \n' + ', '.join(actualOutputFiles))
+        actualOutputFilesSorted = sorted(actualOutputFiles)
+        self.assertItemsEqual(expectedOutputFiles, actualOutputFilesSorted, 'expected \n' + ', '.join(expectedOutputFiles) + '\n does not match actual \n' + ', '.join(actualOutputFilesSorted))
 
 
     def getFilesInTargetFolder(self, rootfolder):

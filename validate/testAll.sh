@@ -2,9 +2,10 @@
 #
 # Run this script to test all solutions
 #
-TARGET=../validate/target
-INPUT=../validate/testData/input
-CURRENT=../validate/testData/currentPhotos
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TARGET=$DIR/target
+INPUT=$DIR/testData/input
+CURRENT=$DIR/testData/currentPhotos
 
 function cleanUp() {
     rm -rf $TARGET
@@ -12,6 +13,7 @@ function cleanUp() {
 }
 
 cleanUp
+
 (cd ../javascript && node ./src/PhotoSorter.js $INPUT $TARGET $CURRENT)
 python acceptanceTest.py
 
@@ -29,4 +31,8 @@ python acceptanceTest.py
 
 cleanUp
 (cd ../go && ./bin/sortPhotos $INPUT $TARGET $CURRENT)
+python acceptanceTest.py
+
+cleanUp
+(cd ../bash/kata && ./photoSorter.sh $INPUT $TARGET $CURRENT)
 python acceptanceTest.py
