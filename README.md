@@ -9,3 +9,11 @@ The validate directory contains a small test utility. Each solution should creat
 python acceptanceTest.py 
 ```
 to check the result. 
+
+## TODO
+
+1. C64/6510 assembly (because that was the first programming language I learned)
+2. Some fancy machine learning algorithm
+3. C++
+4. C
+5. 
