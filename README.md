@@ -16,4 +16,6 @@ to check the result.
 2. Some fancy machine learning algorithm
 3. C++
 4. C
-5. 
+5. Lisp
+6. Prolog
+7. Erlang
