@@ -41,11 +41,5 @@
 ; one-time initialization routines
 ;============================================================
 
-!source "code/init_clear_screen.asm"
-!source "code/init_static_text.asm"
-
-;============================================================
-; Tests, work in progress
-;============================================================
-
-!source "code/get_date_from_filename.asm"
+!source "code/init_stuff.asm"
+!source "code/string_functions.asm"
