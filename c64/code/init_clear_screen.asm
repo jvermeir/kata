@@ -9,12 +9,12 @@ clear_screen     ldx #$00     ; set X to zero (black color code)
                  sta $0500,x 
                  sta $0600,x 
                  sta $06e8,x 
-                 lda #$00     ; set foreground to black in Color Ram 
+                 lda #$03     ; make sure all output is visible
                  sta $d800,x  
                  sta $d900,x
                  sta $da00,x
                  sta $dae8,x
-                 inx           ; increment X
-                 bne .clear     ; did X turn to zero yet?
-                               ; if not, continue with the loop
-                 rts           ; return from this subroutine
+                 inx
+                 bne .clear
+
+                 rts

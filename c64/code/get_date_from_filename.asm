@@ -3,14 +3,14 @@
 ; and ends in $
 ; see https://www.c64-wiki.com/wiki/Indirect-indexed_addressing
 
+!zone get_date
+
 get_date   ldy #$00
 
 .loop      lda ($02), y
-           cmp #$24         ; stop at $ sign
+           cmp #"$"
            beq .test
            sta $0403, y
-           lda #$03
-           sta $d803, y
            iny
            jmp .loop
 
@@ -20,8 +20,6 @@ get_date   ldy #$00
            jmp .store_res
 .ok        lda #$30
 .store_res sta $0400
-           lda #$03
-           sta $d800
 
            rts
 
