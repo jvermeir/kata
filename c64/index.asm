@@ -1,9 +1,5 @@
 ;============================================================
-; Example Project for C64 Tutorials  
-; Code by actraiser/Dustlayer
-; Music: Ikari Intro by Laxity
-;
-; Simple Colorwash effect with a SID playing
+; Inspired by actraiser/Dustlayer
 ;
 ; Tutorial: http://dustlayer.com/c64-coding-tutorials/2013/2/17/a-simple-c64-intro
 ; Dustlayer WHQ: http://dustlayer.com
@@ -30,7 +26,7 @@
 * = $c000     				            ; start address for 6502 code
 
 ;============================================================
-;  Main routine with IRQ setup and custom IRQ routine
+;  Main routine
 ;============================================================
 
 !source "code/main.asm"
@@ -47,3 +43,9 @@
 
 !source "code/init_clear_screen.asm"
 !source "code/init_static_text.asm"
+
+;============================================================
+; Tests, work in progress
+;============================================================
+
+!source "code/get_date_from_filename.asm"
