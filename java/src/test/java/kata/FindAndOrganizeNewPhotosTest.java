@@ -1,11 +1,8 @@
 package kata;
 
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.internal.runners.statements.Fail;
 
 import java.io.File;
 import java.io.IOException;
