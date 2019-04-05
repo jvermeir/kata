@@ -17,7 +17,8 @@ class OutputContains4JpgFilesIn2Folders(unittest.TestCase):
         expectedOutputFiles.sort()
         actualOutputFiles = set(self.getFilesInTargetFolder(TARGET_DIR))
         actualOutputFilesSorted = sorted(actualOutputFiles)
-        self.assertItemsEqual(expectedOutputFiles, actualOutputFilesSorted, 'expected \n' + ', '.join(expectedOutputFiles) + '\n does not match actual \n' + ', '.join(actualOutputFilesSorted))
+
+        self.assertEqual(expectedOutputFiles, actualOutputFilesSorted, 'expected \n' + ', '.join(expectedOutputFiles) + '\n does not match actual \n' + ', '.join(actualOutputFilesSorted))
 
 
     def getFilesInTargetFolder(self, rootfolder):
