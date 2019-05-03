@@ -1,23 +1,16 @@
-import Dependencies._
-
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization := "kata",
-      scalaVersion := "2.12.1",
-      version := "0.1.0-SNAPSHOT"
-    )),
-    name := "kata",
-    libraryDependencies ++= Seq(scalaTest % Test,
-      "commons-io"       % "commons-io"        % "2.5")
-  )
-
-import AssemblyKeys._
-
-assemblySettings
+name := "kata"
 
 version := "1.0"
 
-mainClass in assembly := Some("kata.PhotoSorter")
+scalaVersion := "2.12.8"
 
-name := "photoSorter"
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+
+libraryDependencies += "commons-io" % "commons-io" % "2.6"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.5"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+
+logLevel := Level.Debug
+
+scalacOptions += "-deprecation"

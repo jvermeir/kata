@@ -1,11 +1,11 @@
 package kata
 
 import java.io.File
+import java.nio.file.{Files, Path}
 import java.time.format.DateTimeFormatter
 
-import org.apache.commons.io.FileUtils
-
 import scala.util.Try
+import org.apache.commons.io.FileUtils
 
 /**
   * Sort a set of files into subdirectories named after the year and month as found in the filename.
@@ -27,13 +27,13 @@ object PhotoSorter {
     val directory = new File(s"$outputDir/${getYearMonthFromFileName(file.getName).getOrElse("")}")
 
     directory.mkdirs
-    FileUtils.copyFile(file, new File(directory + "/" + file.getName))
+    Files.copy(file.toPath, Path.of(directory.getAbsolutePath, file.getName))
   }
 
   def copy(inputDir: String, outputDir: String, currentDir: String = ""): Unit = {
     val dir = new File(outputDir)
 
-    if (dir.exists) FileUtils.forceDelete(dir)
+    FileUtils.deleteDirectory(dir)
     findAllJpgFiles(inputDir)
       .filterNot(fileExists(_, currentDir))
       .foreach(copyFile(_, outputDir))
