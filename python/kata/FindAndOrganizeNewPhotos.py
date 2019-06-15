@@ -5,7 +5,6 @@ import re
 import sys
 import datetime
 
-
 #
 # Sort a set of files into subdirectories named after the year and month as found in the filename.
 # See ../validate/acceptanceTest.py
@@ -55,13 +54,12 @@ class FindAndOrganizeNewPhotos:
             current_photos = self.get_jpg_files(current_photos_directory)
         return current_photos
 
-
-def create_empty_target_folder(target_dir):
-    try:
-        shutil.rmtree(target_dir)
-    except OSError:
-        pass
-    os.mkdir(target_dir)
+    def create_empty_target_folder(self, target_dir):
+        try:
+            shutil.rmtree(target_dir)
+        except OSError:
+            pass
+        os.mkdir(target_dir)
 
 
 if __name__ == '__main__':
@@ -76,7 +74,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 4:
         all_photos_dir = sys.argv[3]
 
-    create_empty_target_folder(target_dir)
+    FindAndOrganizeNewPhotos().create_empty_target_folder(target_dir)
 
     FindAndOrganizeNewPhotos().copy_new_photos_to_target_folder(from_phone_dir, target_dir, all_photos_dir)
 
