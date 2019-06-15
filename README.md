@@ -5,9 +5,11 @@ After reading Uncle Bob's Clean Coder book, I decided to follow his advice to pr
 To get started I copied a tool I made to organize a few thousand photo's on my phone. 
 
 The validate directory contains a small test utility. Each solution should create a directory structure validate/target. After running the solution code, cd into the validate folder and run
+
 ```
 python acceptanceTest.py 
 ```
+
 to check the result. 
 
 ## TODO
@@ -19,3 +21,11 @@ to check the result.
 5. Lisp
 6. Prolog
 7. Erlang
+8. TLA+
+
+## History
+
+### Jun 15th, 2019
+
+Well, 6510 assembly language was a bit of a struggle, so I've parked that one for now. I did add a web interface to my Java version and thought that would also be a nice experiment: how do you implement a simple JSON over HTTP interface in each language?
+
