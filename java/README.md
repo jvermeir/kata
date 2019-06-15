@@ -8,9 +8,9 @@ mvn clean install
 
 ####Test
 ```
-mvn exec:java
+mvn exec:java -Dexec.mainClass="kata.PhotoSorter" -Dexec.args="../validate/testData/input/ ../validate/target/ ../validate/testData/currentPhotos/"
 ```
-then run acceptanceTest from the validate folder:
+then run acceptanceTest from the `validate` folder:
 ```
 python acceptanceTest.py
 ```
