@@ -22,8 +22,14 @@ to check the result.
 6. Prolog
 7. Erlang
 8. TLA+
+9. Clojure
+10. Haskell
 
 ## History
+
+### JuLy 31st, 2019
+
+Python refactoring was done, including a REST service. Blog can be found here: https://www.linkedin.com/pulse/uncle-bob-my-personal-programming-kata-jan-vermeir/
 
 ### Jun 15th, 2019
 
