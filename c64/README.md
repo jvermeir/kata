@@ -15,11 +15,13 @@ dust compile
 ```
 ## Stuff
 
-[memory map](http://sta.c64.org/cbm64mem.html) 
 
     $0801-$9FFF Basic area, use for programs?
     $A000-$BFFF Basic rom, parallel ram, switch %x00, %x01 or %x10: RAM area.
     $C000-$CFFF Upper ram
     $0400-$07E7 Screen area
 
+[memory map](http://sta.c64.org/cbm64mem.html) 
 [ACME assembler quick ref](https://sourceforge.net/p/acme-crossass/code-0/6/tree/trunk/docs/QuickRef.txt#l22)
+[ACME pseude op codes](http://www.cbmhardware.de/show.php?r=14&id=7)
+[C64 instruction set](http://e-tradition.net/bytes/6502/6502_instruction_set.html)

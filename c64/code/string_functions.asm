@@ -20,9 +20,9 @@ get_date   ldy #$00
 
 .test      cpy #19
            beq .ok
-           lda #$31
+           lda #"1"
            jmp .store_res
-.ok        lda #$30
+.ok        lda #"0"
 .store_res sta $0400
 
            rts
@@ -54,13 +54,47 @@ compare     ldy #$00
             bne .fail
             iny
             jmp .loop
-.fail       lda #$31
+.fail       lda #"1"
             jmp .exit
-.ok         lda #$30
+.ok         lda #"0"
 .exit       rts
 
-; find out if a string starts with another string
-; TODO
+; find out if string in 02/03 starts with string in 05/06
+!zone startsWith
+startsWith  ldy #$00
+.loop       lda ($05), y
+            cmp #"$"
+            beq .ok
+            cmp ($02), y
+            bne .fail
+            lda ($02), y
+            cmp #"$"
+            beq .fail
+            iny
+            jmp .loop
+.fail       lda #"1"
+            jmp .exit
+.ok         lda #"0"
+.exit       rts
 
-; find out if a string contains only digits
+; find out if a string in 02/03 contains only digits
+!zone digitsOnly
+digitsOnly  ldy #$00
+    +load16BitsIn2Bytes $0680, $05, $06
+.loop       lda ($02), y
+            sta ($05), y
+            cmp #"$"
+            beq .ok
+            cmp #"0"
+            bmi .fail
+            cmp #"9"
+            bpl .fail
+            iny
+            jmp .loop
+.fail       lda #"1"
+            jmp .exit
+.ok         lda #"0"
+.exit       rts
+
+; copy a substring of a string in 02/03 to 05/06
 ; TODO
